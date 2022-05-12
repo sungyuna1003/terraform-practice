@@ -3,12 +3,12 @@ resource "aws_key_pair" "mykey" {
   key_name   = "mykey"
   public_key = "${file("${var.PATH_TO_PUBLIC_KEY}")}"
   
-  # file(var.PATH_TO_PUBLIC_KEY)
+  # 위에 코드로 바꿈, 원래코드-> file(var.PATH_TO_PUBLIC_KEY)
 }
 
 resource "aws_instance" "example" {
   ami           = "${lookup(var.AMIS, var.AWS_REGION)}"
-  # var.AMIS[var.AWS_REGION]
+  # 위에 코드로 바꿈, 원래코드-> var.AMIS[var.AWS_REGION]
   instance_type = "t2.micro"
   key_name      = aws_key_pair.mykey.key_name
 
